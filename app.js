@@ -16,8 +16,8 @@ app.use(express.static('public')) //serve up static files
 app.use(bodyParser.urlencoded());
 app.use(routes);
 
-const page = models.Page.sync();
-const user = models.User.sync();
+// const page = models.Page.sync();
+// const user = models.User.sync();
 
 // Promise.all([page, user])
 // .then(() => {
