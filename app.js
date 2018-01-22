@@ -14,11 +14,19 @@ app.use(express.static('public')) //serve up static files
 
 const page = models.Page.sync();
 const user = models.User.sync();
-Promise.all([page, user])
+
+// Promise.all([page, user])
+// .then(() => {
+//     console.log('database synced');
+//     app.listen(3000, () => ('listening'));
+// }).catch(console.error.bind(console));
+
+models.db.sync({})
 .then(() => {
     console.log('database synced');
-    app.listen(3000, () => ('listening'));
-}).catch(console.error.bind(console));
+    app.listen(3000, () => console.log('listening'))
+})
+.catch(console.error.bind(console));
 
 app.get('/', (req, res, next) => {
     res.render('index');
