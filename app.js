@@ -25,7 +25,7 @@ app.use(routes);
 //     app.listen(3000, () => ('listening'));
 // }).catch(console.error.bind(console));
 
-models.db.sync({force: true})
+models.db.sync({force: false})
 .then(() => {
     console.log('database synced');
     app.listen(3000, () => console.log('listening'))
