@@ -21,7 +21,8 @@ router.post('/', (req, res, next) => {
 
   page.save()
   .then((aPage) => {
-    res.json(aPage);
+    // res.redirect('/wiki/' + aPage.urlTitle);
+    res.redirect(aPage.route);
   })
   .catch(console.error.bind(console));
 })
@@ -40,8 +41,11 @@ router.get('/:urlTitle', (req, res, next) =>
       urlTitle: req.params.urlTitle
     }
   })
-  .then((instances)=>{
-    res.json(instances)
+  .then((instances) => {
+    res.render('wikipage', {
+      title: instances[0].title,
+      content: instances[0].content
+    });
   })
   .catch(console.error.bind(console));
 

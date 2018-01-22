@@ -33,5 +33,8 @@ models.db.sync({force: false})
 .catch(console.error.bind(console));
 
 app.get('/', (req, res, next) => {
-    res.render('index');
+    models.Page.findAll()
+    .then((pages) => {
+        res.render('index', {pages: pages});
+    })
 })
